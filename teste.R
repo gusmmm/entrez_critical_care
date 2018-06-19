@@ -26,3 +26,22 @@ a <- str_replace_all(string = a, pattern = "__NUMBER__\\.__NUMBER__",replacement
 a <- str_replace_all(string = a, pattern = "__NUMBER__%",replacement = "__NUMBER__")
 #aa <- final_df$abstract[1:2]
 #str_replace_all(string = aa, pattern = "[0-9]+",replacement = "__NUMBER__")
+
+### number of lines per uid
+tt <- w_df$uid %>% table() %>% as_data_frame()
+str(tt)
+tt$n
+linhas <- c()
+for(linha in tt$n){
+  print(linha)
+  linhas <- c(linhas,(1:linha))
+  }
+linhas
+
+### filter bbigram
+vv <- bbigram_sep$word1[1:200] %>% str_detect("^\\d+\\.*\\d*$")
+vv
+bbigram_sep$word1[1:200][vv]
+vv2 <- bbigram_sep$word2[1:200] %>% str_detect("^\\d+\\.*\\d*$")
+bbigram_sep$word2[1:200][vv2]
+bbigram_sep[1:200,c(3,4)][(vv|vv2),]

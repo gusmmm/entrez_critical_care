@@ -46,9 +46,10 @@ final_df <- inner_join(metadata_df,abstract_df)
 
 # remove empty abstracts from final_df
 final_df <- final_df[final_df$abstract !="vazio",]
-# remove all numbers from the abstracts
-a <- str_replace_all(string = final_df$abstract, pattern = "[0-9]+",replacement = "__NUMBER__")
-a <- str_replace_all(string = a, pattern = "__NUMBER__\\.__NUMBER__",replacement = "__NUMBER__")
-final_df$abstract <- str_replace_all(string = a, pattern = "__NUMBER__%",replacement = "__NUMBER__")
+
+#### remove all numbers from the abstracts
+#a <- str_replace_all(string = final_df$abstract, pattern = "[0-9]+",replacement = "__NUMBER__")
+#a <- str_replace_all(string = a, pattern = "__NUMBER__\\.__NUMBER__",replacement = "__NUMBER__")
+#final_df$abstract <- str_replace_all(string = a, pattern = "__NUMBER__%",replacement = "__NUMBER__")
 
 
